@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		#calculator {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			padding: 20px;
+			width: 300px;
+			margin: 50px auto;
+			box-shadow: 0 0 10px #ccc;
+		}
+
+		input[type="button"] {
+			background-color: #4CAF50;
+			border: none;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			font-size: 16px;
+			border-radius: 5px;
+			width: 50%;
+			margin: 5px;
+			cursor: pointer;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			width: 100%;
+			margin: 5px 0;
+			font-size: 24px;
+			text-align: right;
+			box-shadow: 0 0 5px #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="calculator">
+		<input type="text" id="display" disabled>
+		<input type="button" value="1" onclick="addDigit('1')">
+		<input type="button" value="2" onclick="addDigit('2')">
+		<input type="button" value="3" onclick="addDigit('3')">
+		<input type="button" value="+" onclick="operatorClicked('+')">
+		<input type="button" value="4" onclick="addDigit('4')">
+		<input type="button" value="5" onclick="addDigit('5')">
+		<input type="button" value="6" onclick="addDigit('6')">
+		<input type="button" value="-" onclick="operatorClicked('-')">
+		<input type="button" value="7" onclick="addDigit('7')">
+		<input type="button" value="8" onclick="addDigit('8')">
+		<input type="button" value="9" onclick="addDigit('9')">
+		<input type="button" value="*" onclick="operatorClicked('*')">
+		<input type="button" value="0" onclick="addDigit('0')">
+		<input type="button" value="C" onclick="clearDisplay()">
+		<input type="button" value="=" onclick="calculate()">
+		<input type="button" value="/" onclick="operatorClicked('/')">
+	</div>
+	<script>
+		let currentOperator = '';
+		let currentOperand = '';
+		let currentResult = '';
+		let display = document.getElementById('display');
+
+		function addDigit(digit) {
+			currentOperand += digit;
+			display.value = currentOperand;
+		}
+
+		function operatorClicked(operator) {
+			if (currentOperator !== '') {
+				calculate();
+			}
+			currentOperator = operator;
+			currentResult = currentOperand;
+			currentOperand = '';
+		}
+
+		function clearDisplay() {
+			currentOperator = '';
+			currentOperand = '';
+			currentResult = '';
+			display.value = '';
+		}
+
+		function calculate() {
+			let operand1 = parseFloat(currentResult);
+			let operand2 = parseFloat(currentOperand);
+			if (isNaN(operand1) || isNaN(operand2))
+        }
